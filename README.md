@@ -10,6 +10,7 @@ LAMA exposes a transparent and unique interface to use:
 - BERT (Devlin et al., 2018)
 - ELMo (Peters et al., 2018)
 - GPT (Radford et al., 2018)
+- RoBERTa (Liu et al., 2019)
 
 Actually, LAMA is also a beautiful animal.
 
@@ -168,16 +169,19 @@ BERT pretrained models can be loaded both: (i) passing the name of the model and
 * __--bert-model-name/--bmn__ : name of the huggingface cached versions of the BERT pre-trained model (default = 'bert-base-cased')
 * __--bert-vocab-name/--bvn__ : name of vocabulary used to pre-train the BERT model (default = 'vocab.txt')
 
+
+### RoBERTa
+
+* __--roberta-model-dir/--rmd__ : directory that contains the RoBERTa pre-trained model and the vocabulary (__REQUIRED__)
+* __--roberta-model-name/--rmn__ : name of the RoBERTa pre-trained model (default = 'model.pt')
+* __--roberta-vocab-name/--rvn__ : name of vocabulary used to pre-train the RoBERTa model (default = 'dict.txt')
+
+
 ### ELMo
 
 * __--elmo-model-dir/--emd__ : directory that contains the ELMo pre-trained model and the vocabulary (__REQUIRED__)
 * __--elmo-model-name/--emn__ : name of the ELMo pre-trained model (default = 'elmo_2x4096_512_2048cnn_2xhighway')
 * __--elmo-vocab-name/--evn__ : name of vocabulary used to pre-train the ELMo model (default = 'vocab-2016-09-10.txt')
-
-### fairseq
-
-* __--fairseq-model-dir/--fmd__ : directory that contains the fairseq pre-trained model and the vocabulary (__REQUIRED__)
-* __--fairseq-model-name/--fmn__ : name of the fairseq pre-trained model (default = 'wiki103.pt')
 
 
 ### Transformer-XL
@@ -248,6 +252,8 @@ If the experiments fail on GPU memory allocation, try reducing batch size.
 - __(Devlin et al., 2018)__ Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2018. _BERT: pre-training of deep bidirectional transformers for language understanding_. CoRR, abs/1810.04805.
 
 - __(Radford et al., 2018)__ Alec Radford, Karthik Narasimhan, Tim Salimans, and Ilya Sutskever. 2018. _Improving language understanding by generative pre-training_.
+
+- __(Liu et al., 2019)__ Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov. 2019. _RoBERTa: A Robustly Optimized BERT Pretraining Approach_. arXiv preprint arXiv:1907.11692.
 
 
 ## Licence

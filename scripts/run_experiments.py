@@ -67,13 +67,13 @@ LMs = [
     #    "bert_model_dir":
     #    "pre-trained_language_models/bert/cased_L-12_H-768_A-12"
     #},
-    {
-        "lm": "bert",
-        "label": "bert_large",
-        "models_names": ["bert"],
-        "bert_model_name": "bert-large-cased",
-        "bert_model_dir": "pre-trained_language_models/bert/cased_L-24_H-1024_A-16",
-    }
+    #{
+    #    "lm": "bert",
+    #    "label": "bert_large",
+    #    "models_names": ["bert"],
+    #    "bert_model_name": "bert-large-cased",
+    #    "bert_model_dir": "pre-trained_language_models/bert/cased_L-24_H-1024_A-16",
+    #}
 ]
 
 
