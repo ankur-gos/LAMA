@@ -27,46 +27,46 @@ LMs = [
     #     "output_dictionary_size": -1,
     #     "data": "pre-trained_language_models/fairseq/wiki103_fconv_lm/"
     # },
-    {
-        "lm":
-        "transformerxl",
-        "label":
-        "transformerxl",
-        "models_names": ["transformerxl"],
-        "transformerxl_model_name":
-        'transfo-xl-wt103',
-        "transformerxl_model_dir":
-        "pre-trained_language_models/transformerxl/transfo-xl-wt103/"
-    },
-    {
-        "lm": "elmo",
-        "label": "elmo",
-        "models_names": ["elmo"],
-        "elmo_model_name": 'elmo_2x4096_512_2048cnn_2xhighway',
-        "elmo_vocab_name": 'vocab-2016-09-10.txt',
-        "elmo_model_dir": "pre-trained_language_models/elmo/original",
-        "elmo_warm_up_cycles": 10
-    },
-        {
-        "lm": "elmo",
-        "label": "elmo5B",
-        "models_names": ["elmo"],
-        "elmo_model_name": "elmo_2x4096_512_2048cnn_2xhighway_5.5B",
-        "elmo_vocab_name": "vocab-enwiki-news-500000.txt",
-        "elmo_model_dir": "pre-trained_language_models/elmo/original5.5B/",
-        "elmo_warm_up_cycles": 10
-    },
-    {
-        "lm":
-        "bert",
-        "label":
-        "bert_base",
-        "models_names": ["bert"],
-        "bert_model_name":
-        "bert-base-cased",
-        "bert_model_dir":
-        "pre-trained_language_models/bert/cased_L-12_H-768_A-12"
-    },
+    #{
+    #    "lm":
+    #    "transformerxl",
+    #    "label":
+    #    "transformerxl",
+    #    "models_names": ["transformerxl"],
+    #    "transformerxl_model_name":
+    #    'transfo-xl-wt103',
+    #    "transformerxl_model_dir":
+    #    "pre-trained_language_models/transformerxl/transfo-xl-wt103/"
+    #},
+    #{
+    #    "lm": "elmo",
+    #    "label": "elmo",
+    #    "models_names": ["elmo"],
+    #    "elmo_model_name": 'elmo_2x4096_512_2048cnn_2xhighway',
+    #    "elmo_vocab_name": 'vocab-2016-09-10.txt',
+    #    "elmo_model_dir": "pre-trained_language_models/elmo/original",
+    #    "elmo_warm_up_cycles": 10
+    #},
+    #    {
+    #    "lm": "elmo",
+    #    "label": "elmo5B",
+    #    "models_names": ["elmo"],
+    #    "elmo_model_name": "elmo_2x4096_512_2048cnn_2xhighway_5.5B",
+    #    "elmo_vocab_name": "vocab-enwiki-news-500000.txt",
+    #    "elmo_model_dir": "pre-trained_language_models/elmo/original5.5B/",
+    #    "elmo_warm_up_cycles": 10
+    #},
+    #{
+    #    "lm":
+    #    "bert",
+    #    "label":
+    #    "bert_base",
+    #    "models_names": ["bert"],
+    #    "bert_model_name":
+    #    "bert-base-cased",
+    #    "bert_model_dir":
+    #    "pre-trained_language_models/bert/cased_L-12_H-768_A-12"
+    #},
     {
         "lm": "bert",
         "label": "bert_large",
@@ -138,12 +138,12 @@ def run_experiments(
             [model_type_name] = args.models_names
             model = build_model_by_name(model_type_name, args)
 
-        Precision1 = run_evaluation(args, shuffle_data=False, model=model)
+        Precision1, Precision10, MRR = run_evaluation(args, shuffle_data=False, model=model)
         print("P@1 : {}".format(Precision1), flush=True)
         all_Precision1.append(Precision1)
 
         results_file.write(
-            "{},{}\n".format(relation["relation"], round(Precision1 * 100, 2))
+            "{},{},{},{},{}\n".format(relation["relation"], round(Precision1 * 100, 2), round(Precision10 * 100, 2), round(MRR * 100, 2), relation)
         )
         results_file.flush()
 
@@ -211,20 +211,20 @@ def run_all_LMs(parameters):
 
 if __name__ == "__main__":
 
-    print("1. Google-RE")    
-    parameters = get_GoogleRE_parameters()
-    run_all_LMs(parameters)
+    #print("1. Google-RE")    
+    #parameters = get_GoogleRE_parameters()
+    #run_all_LMs(parameters)
 
     print("2. T-REx")    
     parameters = get_TREx_parameters()
     run_all_LMs(parameters)
 
-    print("3. ConceptNet")
-    parameters = get_ConceptNet_parameters()
-    run_all_LMs(parameters)
+    #print("3. ConceptNet")
+    #parameters = get_ConceptNet_parameters()
+    #run_all_LMs(parameters)
 
-    print("4. SQuAD")
-    parameters = get_Squad_parameters()
-    run_all_LMs(parameters)
+    #print("4. SQuAD")
+    #parameters = get_Squad_parameters()
+    #run_all_LMs(parameters)
 
     
